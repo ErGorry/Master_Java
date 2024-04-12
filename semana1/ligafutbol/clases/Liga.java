@@ -7,7 +7,7 @@ import java.util.List;
 public class Liga {
 
 	private List<Equipo> liga;
-	private  List<Partido> historico;
+	private List<Partido> historico;
 
 	public Liga(List<Equipo> liga) {
 		super();
@@ -29,8 +29,8 @@ public class Liga {
 		liga.sort((equipo1, equipo2) -> equipo2.getPuntosClasificacion() - equipo1.getPuntosClasificacion());
 		for (Iterator<Equipo> ite = liga.iterator(); ite.hasNext();) {
 			Equipo equipo = ite.next();
-			clasificacion[cont++] = cont + "º / " + equipo.getNombre() + " / " 
-									+ equipo.getPuntosClasificacion() + " puntos.";
+			clasificacion[cont++] = cont + "º / " + equipo.getNombre() + " / " + equipo.getPuntosClasificacion()
+					+ " puntos.";
 		}
 		return clasificacion;
 	}
