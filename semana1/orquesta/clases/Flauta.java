@@ -17,7 +17,7 @@ public class Flauta extends Instrumento {
 	@Override
 	public void tocar() {
 		super.tocar();
-		System.out.print("La flauta sopla una melodia preciosa...\n");
+		System.out.print(" Soplando...\n");
 
 	}
 

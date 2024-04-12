@@ -23,7 +23,7 @@ public class Tambor extends Instrumento {
 	}
 
 	public void aporrear() {
-		System.out.println("Aporreando tambor " + this.nombre + " es " + this.tamanho);
+		System.out.println("Aporreando tambor " + this.nombre);
 	}
 
 }

@@ -1,6 +1,5 @@
 package semana1.interfaces.principal;
 
-import semana1.interfaces.Imprimible;
 import semana1.interfaces.clases.Factura;
 import semana1.interfaces.clases.Pagina;
 
@@ -12,8 +11,8 @@ import semana1.interfaces.clases.Pagina;
 public class GestionDeImpresion {
 
 	public static void main(String[] args) {
-		Imprimible pagina1 = new Pagina("Nombre de la primera página", "Líneas de la primera página");
-		Imprimible factura1 = new Factura("Nombre de la primera factura", 108);
+		Pagina pagina1 = new Pagina("Nombre de la primera página", "Líneas de la primera página");
+		Factura factura1 = new Factura("Nombre de la primera factura", 108);
 
 		System.out.println("Información de Página: ");
 		pagina1.informeCorto();
