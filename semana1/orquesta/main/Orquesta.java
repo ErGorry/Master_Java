@@ -25,8 +25,7 @@ public class Orquesta {
 		for (Iterator<Instrumento> iterator = orquesta.iterator(); iterator.hasNext();) {
 			Instrumento instrumento = iterator.next();
 			if (instrumento instanceof Tambor) {
-				Tambor tambor = (Tambor) instrumento;
-				tambor.aporrear();
+				((Tambor) instrumento).aporrear();
 			} else {
 				instrumento.tocar();
 			}
