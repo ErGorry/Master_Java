@@ -11,6 +11,7 @@ public class Guitarra extends Instrumento {
 
 	public Guitarra(String nombre, int numCuerdas) {
 		super(nombre, Tipo.CUERDA);
+		this.numCuerdas = numCuerdas;
 	}
 
 	public int getNumCuerdas() {

@@ -7,14 +7,14 @@ import semana1.orquesta.clases.Tambor;
 
 /**
  * 
- * @author Admin 11-04-2024
- *	Clase principal del proyecto de orquesta
+ * @author Admin 11-04-2024 Clase principal del proyecto de orquesta
  */
 public class Orquesta {
 
 	public static void main(String[] args) {
 		hacerSonarOrquesta();
-
+		hacerSonarOrquesta();
+		hacerSonarOrquesta();
 	}
 
 	private static void hacerSonarOrquesta() {
@@ -22,7 +22,7 @@ public class Orquesta {
 		new Guitarra("Guitarra", 6).tocar();
 		new GuitarraElectrica("Guitarra electrica", 6, 90).tocar();
 		new Tambor("Tambor", "Bastante grande").aporrear();
-		
+
 	}
 
 }
