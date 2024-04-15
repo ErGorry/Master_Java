@@ -18,7 +18,6 @@ import semana1.figuras.coninterfaz.clases.TrianguloEquilatero;
  *
  */
 public class PrincipalFigurasGeometricas {
-	private static final int RANDOM = 100;
 
 	public static void main(String[] args) {
 		List<Geometrizable> listaFiguras = crearFiguras();
@@ -40,11 +39,11 @@ public class PrincipalFigurasGeometricas {
 
 	private static List<Geometrizable> crearFiguras() {
 		List<Geometrizable> listaFiguras = new ArrayList<>();
-		listaFiguras.add(new Circulo(new Random(RANDOM).nextDouble()));
-		listaFiguras.add(new Cuadrado(new Random(RANDOM).nextDouble()));
-		listaFiguras.add(new Rectangulo(new Random(RANDOM).nextDouble(), new Random(RANDOM).nextDouble()));
-		listaFiguras.add(new TrianguloEquilatero(new Random(RANDOM).nextDouble()));
-		listaFiguras.add(new Pentagono(new Random(RANDOM).nextDouble()));
+		listaFiguras.add(new Circulo(new Random().nextDouble()));
+		listaFiguras.add(new Cuadrado(new Random().nextDouble()));
+		listaFiguras.add(new Rectangulo(new Random().nextDouble(), new Random().nextDouble()));
+		listaFiguras.add(new TrianguloEquilatero(new Random().nextDouble()));
+		listaFiguras.add(new Pentagono(new Random().nextDouble()));
 		return listaFiguras;
 	}
 
