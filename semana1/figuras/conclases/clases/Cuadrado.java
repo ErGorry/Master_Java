@@ -1,5 +1,10 @@
 package semana1.figuras.conclases.clases;
 
+/**
+ * 
+ * @author Admin 15-04-2024
+ *
+ */
 public class Cuadrado extends FiguraGeometrica {
 
 	public static final int NUM_LADOS = 4;

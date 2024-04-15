@@ -12,6 +12,11 @@ import semana1.figuras.conclases.clases.Pentagono;
 import semana1.figuras.conclases.clases.Rectangulo;
 import semana1.figuras.conclases.clases.TrianguloEquilatero;
 
+/**
+ * 
+ * @author Admin 15-04-2024
+ *
+ */
 public class PrincipalFigurasGeometricas {
 	private static final int RANDOM = 100;
 

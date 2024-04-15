@@ -1,5 +1,10 @@
 package semana1.figuras.conclases.clases;
 
+/**
+ * 
+ * @author Admin
+ *
+ */
 public abstract class FiguraGeometrica {
 
 	private int numLados;

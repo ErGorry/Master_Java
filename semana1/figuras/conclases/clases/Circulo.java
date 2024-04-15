@@ -1,5 +1,10 @@
 package semana1.figuras.conclases.clases;
 
+/**
+ * 
+ * @author Admin 
+ *
+ */
 public class Circulo extends FiguraGeometrica {
 	private static final int NUM_LADOS = 0;
 
