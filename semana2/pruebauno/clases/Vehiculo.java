@@ -3,12 +3,14 @@ package semana2.pruebauno.clases;
 import java.time.Duration;
 import java.util.Random;
 
+import semana2.pruebauno.interfaces.Conducible;
+
 /**
  * 
  * @author Admin 16-04-2024
  *
  */
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Conducible {
 
 	private int numRuedas;
 	private int mMA;// Masa maxima autorizada
@@ -28,7 +30,7 @@ public abstract class Vehiculo {
 		this.plazas = plazas;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.tiempoActualTrayecto = Duration.ZERO;
+		this.tiempoActualTrayecto = Duration.ofSeconds(0);
 		this.kilometraje = 0;
 	}
 
@@ -83,9 +85,14 @@ public abstract class Vehiculo {
 	protected abstract String generarMatricula();
 
 	protected static String formatearDuration(Duration duration) {
-		long segundos = duration.getSeconds();
-		String cadena = String.format("%d:%02d:%02d", segundos / 3600, (segundos % 3600) / 60, segundos % 60);
-		return cadena;
+		long segundosTotales = duration.getSeconds();
+		long segundos = segundosTotales % 60;
+		segundosTotales -= segundos;
+		long minutos = (segundosTotales % 3600) / 60;
+		segundosTotales -= minutos * 60;
+		long horas = segundosTotales / 3600;
+		return String.format("%d Horas %02d Minutos %02d Segundos", horas, minutos, segundos);
+		// return duration.toString();
 	}
 
 	private Color validarColor(String color2) {

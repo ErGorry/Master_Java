@@ -3,14 +3,12 @@ package semana2.pruebauno.clases;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
-import semana2.pruebauno.interfaces.Conducible;
-
 /**
  * 
  * @author Admin 16-04-2024
  *
  */
-public class Coche extends Vehiculo implements Conducible {
+public class Coche extends Vehiculo {
 
 	private static final int NUM_RUEDAS = 4;
 	private static final int MASA_MAXIMA_AUTO = 3500;
@@ -53,30 +51,34 @@ public class Coche extends Vehiculo implements Conducible {
 
 	@Override
 	public void conducir() {
-		this.setTiempoActualTrayecto(Duration.ZERO);
+		this.setTiempoActualTrayecto(Duration.ofNanos(0));
 		this.setKilometrajeTrayecto(0);
-		System.out.println("Se inicia el trayecto en el coche: " + this.getMarca() + " " + this.getModelo());
+		System.out.println("Se inicia la conducción en el coche: " + this.getMarca() + " " + this.getModelo());
 	}
 
 	@Override
 	public void avanzar(int kilometros, int velocidad) {
 		this.setKilometraje(this.getKilometraje() + kilometros);
 		this.setKilometrajeTrayecto(this.getKilometrajeTrayecto() + kilometros);
-		this.setTiempoActualTrayecto(this.getTiempoActualTrayecto().plus(kilometros / velocidad, ChronoUnit.HOURS));
-		System.out.println("Avanzamos " + kilometros + "km a velocidad de " + velocidad + "km/h");
-		System.out.println("En este recorrido llevamos " + this.getKilometrajeTrayecto() + "km y "
+		float horas = (float) kilometros / (float) velocidad;
+		float segundosTrayecto = horas * 3600;
+		this.setTiempoActualTrayecto(
+				this.getTiempoActualTrayecto().plus(Math.round(segundosTrayecto), ChronoUnit.SECONDS));
+		System.out.println("Avanzamos " + kilometros + "KM a velocidad de " + velocidad + "KM/H");
+		System.out.println("En este recorrido llevamos " + this.getKilometrajeTrayecto() + "KM y "
 				+ formatearDuration(getTiempoActualTrayecto()));
 	}
 
 	@Override
 	public void parar() {
 		System.out.println("-------Trayecto finalizado--------");
-		System.out.println("-->Has recorrido : " + this.getKilometrajeTrayecto());
-		System.out.println("-->Has tardado : " + formatearDuration(getTiempoActualTrayecto()));
-		int velocidadMedia = Math
-				.round(this.getKilometrajeTrayecto() / (getTiempoActualTrayecto().getSeconds() / 3600));
-		System.out.println("-->La velocidad media fue de :" + velocidadMedia);
-		this.setTiempoActualTrayecto(Duration.ZERO);
+		System.out.println("-->Has recorrido : " + this.getKilometrajeTrayecto() + "KM.");
+		System.out.println("-->Has tardado : " + formatearDuration(this.getTiempoActualTrayecto())+ ".");
+		float horas = this.getTiempoActualTrayecto().getSeconds() / 3600;
+		float velocidadMedia = this.getKilometrajeTrayecto() / horas;
+		System.out.println(String.format("-->La velocidad media ha sido de: %.2f KM/H.", velocidadMedia));
+		this.setTiempoActualTrayecto(Duration.ofNanos(0));
+		this.setKilometrajeTrayecto(0);
 
 	}
 

@@ -11,23 +11,25 @@ public class Principal {
 
 	public static void main(String[] args) {
 		List<Vehiculo> vehiculos = crearVehiculos();
-		realizarTrayecto(3, vehiculos);
+		realizarVariosTrayectos(5, vehiculos);
+
 	}
 
-	private static void realizarTrayecto(int trayectos, List<Vehiculo> vehiculos) {
+	private static void realizarVariosTrayectos(int contador, List<Vehiculo> vehiculos) {
 
 		for (Vehiculo vehiculo : vehiculos) {
+			System.out.println(vehiculo.toString());
+			vehiculo.conducir();
+			for (int i = 0; i < contador; i++) {
 
-			for (int i = 0; i < trayectos; i++) {
-				vehiculo.conducir();
-				if (vehiculo instanceof Coche) {
+				if (vehiculo instanceof Coche coche) {
 
-					Coche coche = (Coche) vehiculo;
 					coche.avanzar(randDistancia(), randVelocidad());
 
 				}
-				vehiculo.parar();
+
 			}
+			vehiculo.parar();
 
 		}
 
@@ -37,13 +39,15 @@ public class Principal {
 		List<Vehiculo> vehiculos = new ArrayList<>();
 		vehiculos.add(new Coche("Audi", "TT", "negro", "coupe"));
 		vehiculos.add(new Coche("Fiat", "Cinquecento", "azul", "coupe"));
+		vehiculos.add(new Coche("BMW", "330D", "gris", "berlina"));
+		vehiculos.add(new Coche("Volkswagen", "Transporter", "amarilla", "familiar"));
 		return vehiculos;
 	}
 
 	protected static int randDistancia() {
 		Random rand = new Random();
 		int min = 50;
-		int max = 300;
+		int max = 500;
 		return rand.nextInt((max - min) + 1) + min;
 	}
 
