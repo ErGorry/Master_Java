@@ -2,11 +2,11 @@ package semana2.electrodomesticos.clases;
 
 public class Television extends Electrodomestico {
 
-	private double resolucion;
-	private boolean sintonizadorTDT;
-
 	private static final double RESOLUCION_DEFECTO = 20;
 	private static final boolean TDT_DEFECTO = false;
+
+	private double resolucion;
+	private boolean sintonizadorTDT;
 
 	public Television() {
 		super();

@@ -2,9 +2,11 @@ package semana2.electrodomesticos.clases;
 
 public class Lavadora extends Electrodomestico {
 
+	private static final double CARGA_DEFECTO = 5;
+	
 	private double carga;
 
-	private static final double CARGA_DEFECTO = 5;
+	
 
 	public Lavadora() {
 		super();

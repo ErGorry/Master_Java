@@ -7,15 +7,15 @@ package semana2.electrodomesticos.clases;
  */
 public class Electrodomestico {
 
-	private double precioBase;
-	private Color color;
-	private ConsumoEnergetico consumo;
-	private double peso;
-
 	private static final double PRECIO_DEFECTO = 100;
 	private static final Color COLOR_DEFECTO = Color.BLANCO;
 	private static final ConsumoEnergetico CONSUMO_ENERGETICO_DEFECTO = ConsumoEnergetico.F;
 	private static final double PESO_DEFECTO = 5;
+
+	private double precioBase;
+	private Color color;
+	private ConsumoEnergetico consumo;
+	private double peso;
 
 	public Electrodomestico() {
 		super();

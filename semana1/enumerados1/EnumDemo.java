@@ -13,7 +13,9 @@ public class EnumDemo {
           System.out.print("Programando en  " + t2);  
           System.out.println(", Valor = " + Tutoriales.valueOf("HTML")); 
           System.out.print("Programando en  " + t3);  
-          System.out.println(", Valor = " + Tutoriales.valueOf("MYSQL"));               
+          System.out.println(", Valor = " + Tutoriales.valueOf("MYSQL"));    
+          System.out.println("-------------------------------------------");
+          
        
 
          for(Tutoriales tuto : Tutoriales.values()) { 
