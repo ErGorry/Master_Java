@@ -14,16 +14,27 @@ public class Coche extends Vehiculo implements Conducible {
 
 	private static final int NUM_RUEDAS = 4;
 	private static final int MASA_MAXIMA_AUTO = 3500;
+	private static final TipoCoche TIPO_COCHE_DEFAULT = TipoCoche.SEDAN;
 
 	private final String matricula;
 
-	public Coche(int plazas, String marca, String modelo, String color) {
-		super(NUM_RUEDAS, MASA_MAXIMA_AUTO, plazas, marca, modelo, color);
+	public Coche(String marca, String modelo, String color, String tipo) {
+		super(NUM_RUEDAS, MASA_MAXIMA_AUTO, validarTipoCoche(tipo), marca, modelo, color);
 		this.matricula = generarMatricula();
 	}
 
 	public String getMatricula() {
 		return matricula;
+	}
+
+	private static int validarTipoCoche(String tipo2) {
+		for (TipoCoche modelo : TipoCoche.values()) {
+			if (tipo2.equalsIgnoreCase(modelo.toString())) {
+
+				return modelo.plazas;
+			}
+		}
+		return TIPO_COCHE_DEFAULT.plazas;
 	}
 
 	@Override
@@ -67,6 +78,11 @@ public class Coche extends Vehiculo implements Conducible {
 		System.out.println("-->La velocidad media fue de :" + velocidadMedia);
 		this.setTiempoActualTrayecto(Duration.ZERO);
 
+	}
+
+	@Override
+	public String toString() {
+		return "Coche con matricula=" + matricula + ", " + super.toString();
 	}
 
 }

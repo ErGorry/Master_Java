@@ -64,6 +64,22 @@ public abstract class Vehiculo {
 		this.kilometrajeTrayecto = kilometrajeTrayecto;
 	}
 
+	public int getNumRuedas() {
+		return numRuedas;
+	}
+
+	public int getmMA() {
+		return mMA;
+	}
+
+	public int getPlazas() {
+		return plazas;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
 	protected abstract String generarMatricula();
 
 	protected static String formatearDuration(Duration duration) {
@@ -85,7 +101,8 @@ public abstract class Vehiculo {
 	public void pintarVehiculo(String color) {
 		System.out.println("Color actual del " + this.getClass().getSimpleName() + " es " + this.color.toString());
 		this.color = validarColor(color);
-		System.out.println("Hemos pintado de color: " + this.color.toString());
+		System.out.println(
+				"Hemos pintado de color: " + this.color.toString() + " el precio del trabajo es" + this.color.precio);
 	}
 
 	protected static int randInt() {
@@ -101,5 +118,17 @@ public abstract class Vehiculo {
 		int max = 90;
 		return (char) (rand.nextInt((max - min) + 1) + min);
 	}
+
+	@Override
+	public String toString() {
+		return "numRuedas=" + numRuedas + ", mMA=" + mMA + "kg, plazas=" + plazas + ", color=" + color.toString()
+				+ ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje;
+	}
+
+	public abstract void conducir();
+
+	public abstract void avanzar(int metros, int velocidad);
+
+	public abstract void parar();
 
 }
