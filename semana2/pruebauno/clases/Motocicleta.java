@@ -1,6 +1,5 @@
 package semana2.pruebauno.clases;
 
-
 /**
  * 
  * @author Admin 17-04-2024
@@ -28,22 +27,21 @@ public class Motocicleta extends Vehiculo {
 		}
 		super.avanzar(kilometros, velocidad);
 
-
 	}
 
 	@Override
 	public void parar() {
-		
+
 		int numDepositos = this.getKilometrajeTrayecto() / AUTONOMIA;
 		System.out.println("-->Hemos parado a repostar un total de: " + numDepositos + " veces");
-		
+
 		super.parar();
-		
+
 	}
 
 	@Override
 	public String toString() {
-		return "\nMotocicleta con matricula=" + matricula + ",con potencia=" + potencia + ", " + super.toString();
+		return super.toString() + ",potencia=" + potencia;
 	}
 
 }

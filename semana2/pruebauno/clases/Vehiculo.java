@@ -189,7 +189,8 @@ public abstract class Vehiculo implements Conducible {
 
 	@Override
 	public String toString() {
-		return "numRuedas=" + numRuedas + ", mMA=" + mMA + "kg, plazas=" + plazas + ", color=" + color.toString()
-				+ ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje;
+		return this.getClass().getSimpleName() + " con matricula=" + matricula + ",numRuedas=" + numRuedas + ", mMA="
+				+ mMA + "KG, plazas=" + plazas + ", color=" + color.toString() + ", marca=" + marca + ", modelo="
+				+ modelo + ", kilometraje=" + kilometraje + "KM";
 	}
 }

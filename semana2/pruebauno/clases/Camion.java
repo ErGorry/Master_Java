@@ -50,10 +50,4 @@ public class Camion extends Vehiculo {
 
 		super.parar();
 	}
-
-	@Override
-	public String toString() {
-		return "\nCamion con matricula=" + matricula + "," + super.toString();
-	}
-
 }

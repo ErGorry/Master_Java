@@ -1,7 +1,5 @@
 package semana2.pruebauno.clases;
 
-
-
 /**
  * 
  * @author Admin 16-04-2024
@@ -25,11 +23,6 @@ public class Coche extends Vehiculo {
 			}
 		}
 		return TIPO_COCHE_DEFAULT.plazas;
-	}
-
-	@Override
-	public String toString() {
-		return "\nCoche con matricula=" + matricula + ", " + super.toString();
 	}
 
 }
