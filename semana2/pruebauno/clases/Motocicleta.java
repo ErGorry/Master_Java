@@ -1,7 +1,5 @@
 package semana2.pruebauno.clases;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 /**
  * 
@@ -24,37 +22,23 @@ public class Motocicleta extends Vehiculo {
 	}
 
 	@Override
-	public void conducir() {
-		this.setTiempoActualTrayecto(Duration.ofNanos(0));
-		this.setKilometrajeTrayecto(0);
-		System.out.println("Se inicia la conducción en la motocicleta: " + this.getMarca() + " " + this.getModelo());
-
-	}
-
-	@Override
 	public void avanzar(int kilometros, int velocidad) {
 		if (this.potencia > 30) {
 			velocidad += this.potencia / 2;
 		}
-		this.setKilometraje(this.getKilometraje() + kilometros);
-		this.setKilometrajeTrayecto(this.getKilometrajeTrayecto() + kilometros);
-		float horas = (float) kilometros / (float) velocidad;
-		float segundosTrayecto = horas * 3600;
-		this.setTiempoActualTrayecto(
-				this.getTiempoActualTrayecto().plus(Math.round(segundosTrayecto), ChronoUnit.SECONDS));
-		System.out.println("Avanzamos " + kilometros + "KM a velocidad de " + velocidad + "KM/H");
-		System.out.println("Acumulamos " + this.getKilometrajeTrayecto() + " KM y "
-				+ formatearDuration(getTiempoActualTrayecto()));
+		super.avanzar(kilometros, velocidad);
+
 
 	}
 
 	@Override
 	public void parar() {
-		pintarResumenFinal();
+		
 		int numDepositos = this.getKilometrajeTrayecto() / AUTONOMIA;
 		System.out.println("-->Hemos parado a repostar un total de: " + numDepositos + " veces");
-		this.setTiempoActualTrayecto(Duration.ofNanos(0));
-		this.setKilometrajeTrayecto(0);
+		
+		super.parar();
+		
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package semana2.pruebauno.clases;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
 import semana2.pruebauno.interfaces.Conducible;
@@ -85,11 +86,12 @@ public abstract class Vehiculo implements Conducible {
 
 	protected static String formatearDuration(Duration duration) {
 		long segundosTotales = duration.getSeconds();
-		long segundos = segundosTotales % 60;
-		segundosTotales -= segundos;
+		long horas = segundosTotales / 3600;
+		segundosTotales -= horas * 3600;
 		long minutos = (segundosTotales % 3600) / 60;
 		segundosTotales -= minutos * 60;
-		long horas = segundosTotales / 3600;
+		long segundos = segundosTotales % 60;
+
 		return String.format("%d Horas %02d Minutos %02d Segundos", horas, minutos, segundos);
 	}
 
@@ -125,13 +127,21 @@ public abstract class Vehiculo implements Conducible {
 		return (char) (rand.nextInt((max - min) + 1) + min);
 	}
 
+	protected void pintarResumenTramo(int kilometros, int velocidad) {
+		System.out
+				.println("++Avanzamos en un nuevo tramo de " + kilometros + "KM a velocidad de " + velocidad + "KM/H");
+		System.out.println("Acumulamos " + this.getKilometrajeTrayecto() + " KM y "
+				+ formatearDuration(getTiempoActualTrayecto()));
+	}
+
 	protected void pintarResumenFinal() {
-		System.out.println("-------Trayecto finalizado--------");
+
 		System.out.println("-->Has recorrido : " + this.getKilometrajeTrayecto() + "KM.");
 		System.out.println("-->Has tardado : " + formatearDuration(this.getTiempoActualTrayecto()) + ".");
 		float horas = (float) this.getTiempoActualTrayecto().getSeconds() / 3600;
 		float velocidadMedia = this.getKilometrajeTrayecto() / horas;
 		System.out.println(String.format("-->La velocidad media ha sido de: %.2f KM/H.", velocidadMedia));
+		System.out.println("-------Trayecto finalizado--------");
 	}
 
 	protected String generarMatricula() {
@@ -145,6 +155,36 @@ public abstract class Vehiculo implements Conducible {
 		sb.append(randChar());
 		sb.append(randChar());
 		return sb.toString();
+	}
+
+	@Override
+	public void conducir() {
+		this.setTiempoActualTrayecto(Duration.ofNanos(0));
+		this.setKilometrajeTrayecto(0);
+		System.out.println("Se inicia la conducción en " + this.getClass().getSimpleName() + ": " + this.getMarca()
+				+ " " + this.getModelo());
+
+	}
+
+	@Override
+	public void avanzar(int kilometros, int velocidad) {
+		this.setKilometraje(this.getKilometraje() + kilometros);
+		this.setKilometrajeTrayecto(this.getKilometrajeTrayecto() + kilometros);
+
+		float horas = (float) kilometros / (float) velocidad;
+		float segundosTrayecto = horas * 3600;
+		this.setTiempoActualTrayecto(
+				this.getTiempoActualTrayecto().plus(Math.round(segundosTrayecto), ChronoUnit.SECONDS));
+		pintarResumenTramo(kilometros, velocidad);
+
+	}
+
+	@Override
+	public void parar() {
+		pintarResumenFinal();
+		this.setTiempoActualTrayecto(Duration.ofNanos(0));
+		this.setKilometrajeTrayecto(0);
+
 	}
 
 	@Override

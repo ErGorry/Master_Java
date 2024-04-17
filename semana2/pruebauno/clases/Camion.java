@@ -1,7 +1,5 @@
 package semana2.pruebauno.clases;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,43 +26,29 @@ public class Camion extends Vehiculo {
 
 	@Override
 	public void conducir() {
-		this.setTiempoActualTrayecto(Duration.ofNanos(0));
-		this.setKilometrajeTrayecto(0);
+		super.conducir();
 		this.tacografo.clear();
-		System.out.println("Se inicia la conducción en el camion: " + this.getMarca() + " " + this.getModelo());
 	}
 
 	@Override
 	public void avanzar(int kilometros, int velocidad) {
-		if (velocidad > LIM_VELOCIDAD) {
-			velocidad = LIM_VELOCIDAD;
-		}
+		velocidad = velocidad > LIM_VELOCIDAD ? LIM_VELOCIDAD : velocidad;
 		this.tacografo.add(velocidad);
-		this.setKilometraje(this.getKilometraje() + kilometros);
-		this.setKilometrajeTrayecto(this.getKilometrajeTrayecto() + kilometros);
-		float horas = (float) kilometros / (float) velocidad;
-		float segundosTrayecto = horas * 3600;
-		this.setTiempoActualTrayecto(
-				this.getTiempoActualTrayecto().plus(Math.round(segundosTrayecto), ChronoUnit.SECONDS));
-		System.out.println("Avanzamos " + kilometros + "KM a velocidad de " + velocidad + "KM/H");
-		System.out.println("Acumulamos " + this.getKilometrajeTrayecto() + " KM y "
-				+ formatearDuration(getTiempoActualTrayecto()));
 
+		super.avanzar(kilometros, velocidad);
 	}
 
 	@Override
 	public void parar() {
-		pintarResumenFinal();
 		System.out.print("-->El tacografo tiene las siguientes lecturas: ");
 		for (Iterator<Integer> iterator = tacografo.iterator(); iterator.hasNext();) {
 			Integer velocidad = iterator.next();
-			System.out.print(velocidad + ", ");
-
+			System.out.print(velocidad + "KM/H, ");
 		}
-		this.setTiempoActualTrayecto(Duration.ofNanos(0));
-		this.setKilometrajeTrayecto(0);
+		System.out.println();
 		this.tacografo.clear();
 
+		super.parar();
 	}
 
 	@Override
