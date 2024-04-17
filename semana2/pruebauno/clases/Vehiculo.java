@@ -84,6 +84,13 @@ public abstract class Vehiculo implements Conducible {
 		return color;
 	}
 
+	/**
+	 * Convierte una duracion temporal de trayecto en segundos en una cadena con
+	 * formato
+	 * 
+	 * @param duration
+	 * @return String con formato dHoras dMinutos dSegundos de trayecto
+	 */
 	protected static String formatearDuration(Duration duration) {
 		long segundosTotales = duration.getSeconds();
 		long horas = segundosTotales / 3600;
@@ -95,6 +102,11 @@ public abstract class Vehiculo implements Conducible {
 		return String.format("%d Horas %02d Minutos %02d Segundos", horas, minutos, segundos);
 	}
 
+	/**
+	 * 
+	 * @param color2 cadena con el color deseado
+	 * @return Un Enum de Color valido o el valor por defecto (BLANCO)
+	 */
 	private Color validarColor(String color2) {
 		for (Color color : Color.values()) {
 			if (color2.equalsIgnoreCase(color.toString())) {
@@ -105,6 +117,11 @@ public abstract class Vehiculo implements Conducible {
 		return Color.BLANCO;
 	}
 
+	/**
+	 * Permite cambiar el color del vehiculo en cualquier momento
+	 * 
+	 * @param color que queremos pintar el vehiculo
+	 */
 	public void pintarVehiculo(String color) {
 		System.out.println("Color actual del " + this.getClass().getSimpleName() + " es " + this.color.toString()
 				+ " y lo pintaremos.");
@@ -115,7 +132,7 @@ public abstract class Vehiculo implements Conducible {
 
 	protected static int randInt() {
 		Random rand = new Random();
-		int min = 1;
+		int min = 0;
 		int max = 9;
 		return rand.nextInt((max - min) + 1) + min;
 	}
@@ -144,6 +161,10 @@ public abstract class Vehiculo implements Conducible {
 		System.out.println("-------Trayecto finalizado--------");
 	}
 
+	/**
+	 * 
+	 * @return Matricula con el formato de Spain [0000 AAA] (Permite vocales)
+	 */
 	protected String generarMatricula() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(randInt());
@@ -157,6 +178,9 @@ public abstract class Vehiculo implements Conducible {
 		return sb.toString();
 	}
 
+	/**
+	 * Arranca contadores de marcha e indica el vehiculo que vas a conducir
+	 */
 	@Override
 	public void conducir() {
 		this.setTiempoActualTrayecto(Duration.ofNanos(0));
@@ -166,6 +190,10 @@ public abstract class Vehiculo implements Conducible {
 
 	}
 
+	/**
+	 * Aumenta los contadores de marcha con el tiempo y la distancia del trayecto
+	 * mediante la velocidad
+	 */
 	@Override
 	public void avanzar(int kilometros, int velocidad) {
 		this.setKilometraje(this.getKilometraje() + kilometros);
@@ -179,6 +207,10 @@ public abstract class Vehiculo implements Conducible {
 
 	}
 
+	/**
+	 * Pinta un resumen final de la conduccion y vuelve a poner los contadores de
+	 * marcha en vacio
+	 */
 	@Override
 	public void parar() {
 		pintarResumenFinal();
