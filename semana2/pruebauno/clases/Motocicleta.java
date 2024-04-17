@@ -3,45 +3,34 @@ package semana2.pruebauno.clases;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
-/**
- * 
- * @author Admin 16-04-2024
- *
- */
-public class Coche extends Vehiculo {
+public class Motocicleta extends Vehiculo {
 
-	private static final int NUM_RUEDAS = 4;
-	private static final int MASA_MAXIMA_AUTO = 3500;
-	private static final TipoCoche TIPO_COCHE_DEFAULT = TipoCoche.SEDAN;
+	private static final int NUM_RUEDAS = 2;
+	private static final int MMA = 350;
+	private static final int NUM_PLAZAS = 2;
+	private static final int AUTONOMIA = 350;
 
-	public Coche(String marca, String modelo, String color, String tipo) {
-		super(NUM_RUEDAS, MASA_MAXIMA_AUTO, validarTipoCoche(tipo), marca, modelo, color);
+	private int potencia;
+
+	public Motocicleta(String marca, String modelo, String color, int potencia) {
+		super(NUM_RUEDAS, MMA, NUM_PLAZAS, marca, modelo, color);
 		super.matricula = generarMatricula();
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	private static int validarTipoCoche(String tipo2) {
-		for (TipoCoche modelo : TipoCoche.values()) {
-			if (tipo2.equalsIgnoreCase(modelo.toString())) {
-
-				return modelo.plazas;
-			}
-		}
-		return TIPO_COCHE_DEFAULT.plazas;
+		this.potencia = potencia;
 	}
 
 	@Override
 	public void conducir() {
 		this.setTiempoActualTrayecto(Duration.ofNanos(0));
 		this.setKilometrajeTrayecto(0);
-		System.out.println("Se inicia la conducción en el coche: " + this.getMarca() + " " + this.getModelo());
+		System.out.println("Se inicia la conducción en la motocicleta: " + this.getMarca() + " " + this.getModelo());
+
 	}
 
 	@Override
 	public void avanzar(int kilometros, int velocidad) {
+		if (this.potencia > 30) {
+			velocidad += this.potencia / 2;
+		}
 		this.setKilometraje(this.getKilometraje() + kilometros);
 		this.setKilometrajeTrayecto(this.getKilometrajeTrayecto() + kilometros);
 		float horas = (float) kilometros / (float) velocidad;
@@ -51,19 +40,21 @@ public class Coche extends Vehiculo {
 		System.out.println("Avanzamos " + kilometros + "KM a velocidad de " + velocidad + "KM/H");
 		System.out.println("Acumulamos " + this.getKilometrajeTrayecto() + " KM y "
 				+ formatearDuration(getTiempoActualTrayecto()));
+
 	}
 
 	@Override
 	public void parar() {
 		pintarResumenFinal();
+		int numDepositos = this.getKilometrajeTrayecto() / AUTONOMIA;
+		System.out.println("-->Hemos parado a repostar un total de: " + numDepositos + " veces");
 		this.setTiempoActualTrayecto(Duration.ofNanos(0));
 		this.setKilometrajeTrayecto(0);
-
 	}
 
 	@Override
 	public String toString() {
-		return "\nCoche con matricula=" + matricula + ", " + super.toString();
+		return "\nMotocicleta con matricula=" + matricula + ",con potencia=" + potencia + ", " + super.toString();
 	}
 
 }

@@ -21,6 +21,7 @@ public abstract class Vehiculo implements Conducible {
 	private Duration tiempoActualTrayecto;
 	private int kilometraje;
 	private int kilometrajeTrayecto;
+	protected String matricula;
 
 	public Vehiculo(int numRuedas, int mMA, int plazas, String marca, String modelo, String color) {
 		super();
@@ -82,8 +83,6 @@ public abstract class Vehiculo implements Conducible {
 		return color;
 	}
 
-	protected abstract String generarMatricula();
-
 	protected static String formatearDuration(Duration duration) {
 		long segundosTotales = duration.getSeconds();
 		long segundos = segundosTotales % 60;
@@ -106,10 +105,11 @@ public abstract class Vehiculo implements Conducible {
 	}
 
 	public void pintarVehiculo(String color) {
-		System.out.println("Color actual del " + this.getClass().getSimpleName() + " es " + this.color.toString());
+		System.out.println("Color actual del " + this.getClass().getSimpleName() + " es " + this.color.toString()
+				+ " y lo pintaremos.");
 		this.color = validarColor(color);
-		System.out.println(
-				"Hemos pintado de color: " + this.color.toString() + " el precio del trabajo es" + this.color.precio);
+		System.out.println("Hemos pintado de color: " + this.color.toString() + " el precio del trabajo es "
+				+ this.color.precio + "€.");
 	}
 
 	protected static int randInt() {
@@ -126,11 +126,33 @@ public abstract class Vehiculo implements Conducible {
 		return (char) (rand.nextInt((max - min) + 1) + min);
 	}
 
+	protected void pintarResumenFinal() {
+		System.out.println("-------Trayecto finalizado--------");
+		System.out.println("-->Has recorrido : " + this.getKilometrajeTrayecto() + "KM.");
+		System.out.println("-->Has tardado : " + formatearDuration(this.getTiempoActualTrayecto()) + ".");
+		float horas = (float) this.getTiempoActualTrayecto().getSeconds() / 3600;
+		float velocidadMedia = this.getKilometrajeTrayecto() / horas;
+		System.out.println(String.format("-->La velocidad media ha sido de: %.2f KM/H.", velocidadMedia));
+	}
+
 	@Override
 	public String toString() {
 		return "numRuedas=" + numRuedas + ", mMA=" + mMA + "kg, plazas=" + plazas + ", color=" + color.toString()
 				+ ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje;
 	}
+
+	protected String generarMatricula() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(randInt());
+		sb.append(randInt());
+		sb.append(randInt());
+		sb.append(randInt());
+		sb.append(' ');
+		sb.append(randChar());
+		sb.append(randChar());
+		sb.append(randChar());
+		return sb.toString();
+	};
 
 	public abstract void conducir();
 
