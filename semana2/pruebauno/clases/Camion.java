@@ -6,17 +6,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * 
+ * @author Admin 17-04-2024
+ *
+ */
 public class Camion extends Vehiculo {
 
 	private static final int NUM_RUEDAS = 8;
-	private static final int MMA = 7500;
+	private static final int MASA_MAXIMA_AUTO = 7500;
 	private static final int NUM_PLAZAS = 1;
 	private static final int LIM_VELOCIDAD = 90;
 
 	private List<Integer> tacografo;
 
 	public Camion(String marca, String modelo, String color) {
-		super(NUM_RUEDAS, MMA, NUM_PLAZAS, marca, modelo, color);
+		super(NUM_RUEDAS, MASA_MAXIMA_AUTO, NUM_PLAZAS, marca, modelo, color);
 		super.matricula = generarMatricula();
 		this.tacografo = new ArrayList<>();
 	}

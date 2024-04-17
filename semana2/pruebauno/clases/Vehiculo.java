@@ -23,7 +23,7 @@ public abstract class Vehiculo implements Conducible {
 	private int kilometrajeTrayecto;
 	protected String matricula;
 
-	public Vehiculo(int numRuedas, int mMA, int plazas, String marca, String modelo, String color) {
+	protected Vehiculo(int numRuedas, int mMA, int plazas, String marca, String modelo, String color) {
 		super();
 		this.color = validarColor(color);
 		this.numRuedas = numRuedas;
@@ -91,7 +91,6 @@ public abstract class Vehiculo implements Conducible {
 		segundosTotales -= minutos * 60;
 		long horas = segundosTotales / 3600;
 		return String.format("%d Horas %02d Minutos %02d Segundos", horas, minutos, segundos);
-		// return duration.toString();
 	}
 
 	private Color validarColor(String color2) {
@@ -135,12 +134,6 @@ public abstract class Vehiculo implements Conducible {
 		System.out.println(String.format("-->La velocidad media ha sido de: %.2f KM/H.", velocidadMedia));
 	}
 
-	@Override
-	public String toString() {
-		return "numRuedas=" + numRuedas + ", mMA=" + mMA + "kg, plazas=" + plazas + ", color=" + color.toString()
-				+ ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje;
-	}
-
 	protected String generarMatricula() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(randInt());
@@ -152,12 +145,11 @@ public abstract class Vehiculo implements Conducible {
 		sb.append(randChar());
 		sb.append(randChar());
 		return sb.toString();
-	};
+	}
 
-	public abstract void conducir();
-
-	public abstract void avanzar(int metros, int velocidad);
-
-	public abstract void parar();
-
+	@Override
+	public String toString() {
+		return "numRuedas=" + numRuedas + ", mMA=" + mMA + "kg, plazas=" + plazas + ", color=" + color.toString()
+				+ ", marca=" + marca + ", modelo=" + modelo + ", kilometraje=" + kilometraje;
+	}
 }

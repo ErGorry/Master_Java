@@ -9,6 +9,11 @@ import semana2.pruebauno.clases.Coche;
 import semana2.pruebauno.clases.Motocicleta;
 import semana2.pruebauno.clases.Vehiculo;
 
+/**
+ * 
+ * @author Admin 17-04-2024
+ *
+ */
 public class Principal {
 
 	public static void main(String[] args) {
