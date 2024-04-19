@@ -85,8 +85,7 @@ public abstract class Vehiculo implements Conducible {
 	}
 
 	/**
-	 * Convierte una duracion temporal de trayecto en segundos en una cadena con
-	 * formato
+	 * Convierte una duracion temporal de trayecto en una cadena con formato
 	 * 
 	 * @param duration
 	 * @return String con formato dHoras dMinutos dSegundos de trayecto
@@ -163,7 +162,7 @@ public abstract class Vehiculo implements Conducible {
 
 	/**
 	 * 
-	 * @return Matricula con el formato de Spain [0000 AAA] (Permite vocales)
+	 * @return String Matricula con el formato de Spain [0000 AAA] (Permite vocales)
 	 */
 	protected String generarMatricula() {
 		StringBuilder sb = new StringBuilder();

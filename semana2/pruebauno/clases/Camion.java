@@ -23,13 +23,17 @@ public class Camion extends Vehiculo {
 		super.matricula = generarMatricula();
 		this.tacografo = new ArrayList<>();
 	}
-
+	/**
+	 * Vacia los registros del tacografo acumulador de velocidades durante el trayecto
+	 */
 	@Override
 	public void conducir() {
 		super.conducir();
 		this.tacografo.clear();
 	}
-
+	/**
+	 * Los camiones tienen una velocidad limitada
+	 */
 	@Override
 	public void avanzar(int kilometros, int velocidad) {
 		velocidad = velocidad > LIM_VELOCIDAD ? LIM_VELOCIDAD : velocidad;
