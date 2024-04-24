@@ -25,11 +25,6 @@ public class EmpleadoCRUDRepository {
 		con = Conexion.getConnection();
 	}
 
-	List<Empleado> getAllEmpleados() {
-		String query = "SELECT * FROM empleados";
-		return obtenerLista(query);
-	}
-
 	Empleado getEmpleadoById(int id) {
 		String query = "SELECT * FROM empleados WHERE id = ?";
 		Empleado emp = null;
@@ -49,6 +44,11 @@ public class EmpleadoCRUDRepository {
 			e.printStackTrace();
 		}
 		return emp;
+	}
+
+	List<Empleado> getAllEmpleados() {
+		String query = "SELECT * FROM empleados";
+		return obtenerLista(query);
 	}
 
 	List<Empleado> getEmpleadosByDepartamento(String dpto) {
@@ -128,8 +128,8 @@ public class EmpleadoCRUDRepository {
 	private List<Empleado> obtenerLista(String query, String... params) {
 		List<Empleado> lista = new ArrayList<>();
 		try (PreparedStatement prepStmt = con.prepareStatement(query);) {
-			for (int i = 1; i <= params.length; i++) {
-				prepStmt.setString(i, params[i]);
+			for (int i = 0; i < params.length; i++) {
+				prepStmt.setString(i + 1, params[i]);
 			}
 			ResultSet rs = prepStmt.executeQuery(query);
 			while (rs.next()) {
