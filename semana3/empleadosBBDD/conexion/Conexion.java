@@ -23,10 +23,11 @@ public class Conexion {
 		String password = "root";
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url, usuario, password);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch ( SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

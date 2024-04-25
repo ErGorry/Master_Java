@@ -16,6 +16,21 @@ public class Empleado {
 	public Empleado() {
 		super();
 	}
+	
+	
+
+	public Empleado(String nombre, String apellido, Date fechaNacimiento, Date fechaContratacion,
+			String departamento, double salario) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fechaNacimiento = fechaNacimiento;
+		this.fechaContratacion = fechaContratacion;
+		this.departamento = validarDpto(departamento);
+		this.salario = salario;
+	}
+
+
 
 	public Empleado(int id, String nombre, String apellido, Date fechaNacimiento, Date fechaContratacion,
 			String departamento, double salario) {
@@ -28,6 +43,8 @@ public class Empleado {
 		this.departamento = validarDpto(departamento);
 		this.salario = salario;
 	}
+
+	
 
 	public int getId() {
 		return id;
@@ -114,6 +131,11 @@ public class Empleado {
 				&& Objects.equals(fechaNacimiento, other.fechaNacimiento) && Objects.equals(nombre, other.nombre)
 				&& Double.doubleToLongBits(salario) == Double.doubleToLongBits(other.salario);
 	}
-	
+
+	@Override
+	public String toString() {
+		return id + ". " + nombre + ", " + apellido + ", fechaNacimiento:" + fechaNacimiento + ", fechaContratacion:"
+				+ fechaContratacion + ", departamento=" + departamento + ", salario=" + salario;
+	}
 
 }
