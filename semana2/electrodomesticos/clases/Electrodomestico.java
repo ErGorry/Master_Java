@@ -1,11 +1,13 @@
 package semana2.electrodomesticos.clases;
 
+import semana2.electrodomesticos.interfaz.Comprable;
+
 /**
  * 
  * @author Admin 15-04-2024
  *
  */
-public class Electrodomestico {
+public class Electrodomestico{
 
 	private static final double PRECIO_DEFECTO = 100;
 	private static final Color COLOR_DEFECTO = Color.BLANCO;

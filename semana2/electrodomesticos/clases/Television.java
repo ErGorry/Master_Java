@@ -1,6 +1,8 @@
 package semana2.electrodomesticos.clases;
 
-public class Television extends Electrodomestico {
+import semana2.electrodomesticos.interfaz.Comprable;
+
+public class Television extends Electrodomestico implements Comprable {
 
 	private static final double RESOLUCION_DEFECTO = 20;
 	private static final boolean TDT_DEFECTO = false;
@@ -33,7 +35,7 @@ public class Television extends Electrodomestico {
 	}
 
 	@Override
-	public double precioFinal() {
+	public double getPrecioFinal() {
 		if (resolucion > 40) {
 			return sintonizadorTDT ? (super.precioFinal() * 1.3) + 50 : super.precioFinal() * 1.3;
 		} else {

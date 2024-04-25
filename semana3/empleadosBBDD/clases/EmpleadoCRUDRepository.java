@@ -47,33 +47,33 @@ public class EmpleadoCRUDRepository {
 	}
 
 	public List<Empleado> getAllEmpleados() {
-		String query = "SELECT * FROM empleados";
+		String query = "SELECT * FROM empleados;";
 		return obtenerLista(query);
 	}
 
 	public List<Empleado> getEmpleadosByDepartamento(String dpto) {
-		String query = "SELECT * FROM empleados WHERE departamento = ?";
+		String query = "SELECT * FROM empleados WHERE departamento = ?;";
 		return obtenerLista(query, Empleado.validarDpto(dpto).toString());
 	}
 
 	public List<Empleado> getEmpleadosByApellido(String apellido) {
-		String query = "SELECT * FROM empleados WHERE apellido = ?";
+		String query = "SELECT * FROM empleados WHERE apellido = ?;";
 		return obtenerLista(query, apellido);
 	}
 
 	public List<Empleado> getEmpleadosByNombre(String nombre) {
-		String query = "SELECT * FROM empleados WHERE nombre = ?";
+		String query = "SELECT * FROM empleados WHERE nombre = ?;";
 		return obtenerLista(query, nombre);
 	}
 
 	public List<Empleado> getEmpleadosByMayorSalarioQue(double salario) {
-		String query = "SELECT * FROM empleados WHERE salario > ?";
+		String query = "SELECT * FROM empleados WHERE salario > ?;";
 		return obtenerLista(query, String.valueOf(salario));
 	}
 
 	public void insertEmpleado(Empleado emp) {
 		String query = "INSERT INTO empleados (nombre, apellido, fecha_nacimiento,"
-				+ " fecha_contratacion, departamento, salario) VALUES(?,?,?,?,?,?)";
+				+ " fecha_contratacion, departamento, salario) VALUES(?,?,?,?,?,?);";
 		try (PreparedStatement prepS = con.prepareStatement(query)) {
 			setStatementEmpleado(emp, prepS);
 			prepS.execute();
@@ -83,9 +83,8 @@ public class EmpleadoCRUDRepository {
 	}
 
 	public void updateEmpleado(Empleado emp, int id) {
-		if (!emp.equals(getEmpleadoById(id))) {
 			String query = "UPDATE empleados SET nombre = ?, apellido = ?, fecha_nacimiento = ?,"
-					+ " fecha_contratacion = ?, departamento = ?, salario = ? WHERE id = ?";
+					+ " fecha_contratacion = ?, departamento = ?, salario = ? WHERE id = ?;";
 			try (PreparedStatement prepS = con.prepareStatement(query)) {
 				setStatementEmpleado(emp, prepS);
 				prepS.setInt(7, id);
@@ -93,12 +92,11 @@ public class EmpleadoCRUDRepository {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
 
 	}
 
 	public void deleteEmpleadoById(int id) {
-		String query = "DELETE FROM empleados WHERE id = ?";
+		String query = "DELETE FROM empleados WHERE id = ?;";
 		try (PreparedStatement prepS = con.prepareStatement(query)) {
 			prepS.setInt(1, id);
 			prepS.execute();
@@ -131,7 +129,7 @@ public class EmpleadoCRUDRepository {
 			for (int i = 0; i < params.length; i++) {
 				prepStmt.setString(i + 1, params[i]);
 			}
-			ResultSet rs = prepStmt.executeQuery(query);
+			ResultSet rs = prepStmt.executeQuery();
 			while (rs.next()) {
 				lista.add(crearEmpleadoDesdeBBDD(rs));
 			}

@@ -20,6 +20,7 @@ public class PrincipalEmpleados {
 		String metodo;
 
 		EmpleadoCRUDRepository crud = new EmpleadoCRUDRepository();
+		
 		StringBuilder menuPrincipal = new StringBuilder();
 		menuPrincipal.append("-----------Opciones:\n");
 		menuPrincipal.append("1. Listar empleados.\n");
@@ -111,7 +112,7 @@ public class PrincipalEmpleados {
 					Date.valueOf(
 							JOptionPane.showInputDialog("Escribe la fecha de contratacion en formato: yyyy-mm-dd")),
 					JOptionPane.showInputDialog("Escribe el departamento: "),
-					Double.valueOf(JOptionPane.showInputDialog("Escribe el salario: xxxxx,xx")));
+					Double.valueOf(JOptionPane.showInputDialog("Escribe el salario: xxxxx.xx")));
 			crud.updateEmpleado(emp, empleadoId);
 			break;
 		default:

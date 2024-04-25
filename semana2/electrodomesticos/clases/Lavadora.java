@@ -1,6 +1,8 @@
 package semana2.electrodomesticos.clases;
 
-public class Lavadora extends Electrodomestico {
+import semana2.electrodomesticos.interfaz.Comprable;
+
+public class Lavadora extends Electrodomestico  implements Comprable{
 
 	private static final double CARGA_DEFECTO = 5;
 	
@@ -26,9 +28,8 @@ public class Lavadora extends Electrodomestico {
 	public double getCarga() {
 		return carga;
 	}
-
 	@Override
-	public double precioFinal() {
+	public double getPrecioFinal() {
 		if (carga > 30) {
 			return super.precioFinal() + 50;
 		}

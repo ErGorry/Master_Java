@@ -16,20 +16,19 @@ public class PrincipalElectrodomesticos {
 	}
 
 	private static void mostrarDatos(List<Electrodomestico> electro) {
-		if (electro.size() > 0) {
+		if (!electro.isEmpty()) {
 			double precioElectro = 0;
 			double precioTele = 0;
 			double precioLava = 0;
 			for (Electrodomestico electrodomestico : electro) {
-				if (electrodomestico instanceof Television) {
-					Television tele = (Television) electrodomestico;
-					precioTele += tele.precioFinal();
+				if (electrodomestico instanceof Television tele) {
+					precioTele += tele.getPrecioFinal();
+					precioElectro += tele.getPrecioFinal();
 
-				} else if (electrodomestico instanceof Lavadora) {
-					Lavadora lava = (Lavadora) electrodomestico;
-					precioLava += lava.precioFinal();
+				} else if (electrodomestico instanceof Lavadora lava) {
+					precioLava += lava.getPrecioFinal();
+					precioElectro += lava.getPrecioFinal();
 				}
-				precioElectro += electrodomestico.precioFinal();
 
 			}
 			System.out.println("Precio total de electrodomesticos en el array: " + precioElectro);
