@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style/estilo.css">
+</head>
+<body>
+	<h2>Creador automatizado de Carta de presentacion:</h2>
+
+	<form action="ServletFormulario04" method="post">
+		<div>
+			<label>Nombre: </label> <input required type="text" name="nombre">
+		</div>
+		<div>
+			<label>Apellidos: </label> <input required type="text"
+				name="apellidos">
+		</div>
+		<div>
+			<label>Puesto de trabajo esperado: </label> <input required
+				type="text" name="trabajo">
+		</div>
+		<div>
+			<label>Máximo nivel de estudios terminados: </label> <select required
+				name="estudio">
+				<option>Educacion Obligatoria</option>
+				<option>Bachillerato</option>
+				<option>Ciclo Medio</option>
+				<option>Ciclo Superior</option>
+				<option>Universidad</option>
+				<option>Master</option>
+				<option>Doctorado</option>
+			</select>
+		</div>
+		<div>
+			<label>Nombre de la institución: </label> <input required type="text"
+				name="institucion">
+		</div>
+		<div>
+			<label>Selecciona los lenguajes y tecnologías con las que
+				trabajas: </label> <select multiple required size="1" name="tecnologias">
+				<option value="JAVA">JAVA</option>
+				<option value="JavaScript">JavaScript</option>
+				<option value="Python">Python</option>
+				<option value="React">React</option>
+				<option value="Angular">Angular</option>
+				<option value="PHP">PHP</option>
+				<option value="Ruby">Ruby</option>
+			</select>
+
+		</div>
+		<input type="submit" value="Generar">
+	</form>
+</body>
+</html>
