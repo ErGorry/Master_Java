@@ -1,0 +1,126 @@
+@charset "ISO-8859-1";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+	;
+
+.poppins-thin {
+	font-family: "Poppins", sans-serif;
+	font-weight: 100;
+	font-style: normal;
+}
+
+.poppins-regular {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.poppins-medium {
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.poppins-semibold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.poppins-bold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.poppins-extrabold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 800;
+	font-style: normal;
+}
+
+.poppins-light-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.poppins-regular-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.poppins-medium-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: italic;
+}
+
+.poppins-semibold-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-style: italic;
+}
+
+.poppins-bold-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+}
+
+body {
+	font-family: Poppins;
+	width: 70%;
+	margin-left: 15%;
+}
+
+form {
+	background-color: #AADEDB;
+	align-self: center;
+	border: 1px solid black;
+	border-radius: 25px;
+	align-self: center;
+	padding: 2%;
+	text-align: center;
+	margin: 2%;
+}
+
+form>div {
+	padding: 3%;
+	width: 100%;
+	display: flex;
+	text-align: center;
+	width: 100%;
+}
+
+label {
+	width: 20%;
+	text-align: right;
+	font-size: medium;
+}
+
+a {
+	text-decoration: none;
+	color: black
+}
+
+input {
+	width: 50%;
+	text-align: left;
+	font-size: medium;
+	margin-left: 5%;
+}
+
+select {
+	width: 50%;
+	text-align: left;
+	font-size: medium;
+	margin-left: 5%;
+}
+
+button {
+	background-color: #37D3CC;
+	font-size: x-large;
+}
