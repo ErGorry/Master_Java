@@ -9,6 +9,11 @@
 <link rel="stylesheet" type="text/css" href="style/estilo.css">
 </head>
 <body>
+<%
+Boolean admin = null;
+if(session.getAttribute("admin")!=null){
+	admin = (Boolean) session.getAttribute("admin");
+}%>
 	<form action="BusquedaProductos" method="post">
 		<div>
 			<label for="nombreProducto">Nombre: </label><input type="text"
@@ -27,6 +32,10 @@
 			</select>
 		</div>
 		<button type="submit">Buscar Productos</button>
+		<%if(admin){ %>
+		<button><a href="BusquedaProductos?stock=true">Listar productos sin stock</a></button>
+		
+		<%} %>
 		<%
 		if (session.getAttribute("mensajeBuscar") != null) {
 		%>

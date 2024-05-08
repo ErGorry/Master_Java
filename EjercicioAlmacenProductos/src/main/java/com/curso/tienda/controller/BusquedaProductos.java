@@ -27,7 +27,16 @@ public class BusquedaProductos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("busquedaProductos.jsp");
+		
+		if (request.getParameter("stock") != null) {
+			List<Producto> list = ProductoService.listaProductosSinStock();
+			HttpSession sesion = request.getSession();
+			sesion.setAttribute("listaProductos", list);
+			response.sendRedirect("listarProductos.jsp");
+		} else {
+			response.sendRedirect("busquedaProductos.jsp");
+		}
+		
 	}
 
 	/**
@@ -43,6 +52,7 @@ public class BusquedaProductos extends HttpServlet {
 				: request.getParameter("categoriaProducto");
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("listaProductos", null);
+		sesion.setAttribute("mensajeMenu", null);
 		LinkedList<Producto> list = new LinkedList<>();
 		if (nombre != null) {
 			if (categoria != null) {
@@ -58,7 +68,6 @@ public class BusquedaProductos extends HttpServlet {
 				response.sendRedirect("busquedaProductos.jsp");
 			}
 		}
-		sesion.setAttribute("mensajeList", "Se han encontrado: " + list.size() + " productos");
 		sesion.setAttribute("error", null);
 		if (!list.isEmpty()) {
 			sesion.setAttribute("listaProductos", list);

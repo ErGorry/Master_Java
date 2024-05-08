@@ -9,6 +9,7 @@
 </head>
 <body>
 <h2>Bienvenido a la tienda Master_Java</h2>
+
 	<p>En esta tienda puede explorar nuestros productos de diferentes
 		categorías</p>
 	<form action="Login" method="post">

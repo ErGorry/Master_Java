@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@page import="com.curso.tienda.model.Producto"%>
+	<%@page import="com.curso.tienda.model.Categoria"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,12 +25,13 @@ prod = (Producto)request.getAttribute("productoMod");
 		<div>
 			<label for="categoriaProducto">Categoria: </label> <select
 				name="categoriaProducto" required>
-				<option value="ALIMENTACION">Alimentacion</option>
-				<option value="ELECTRODOMESTICOS" selected>Electrodomesticos</option>
-				<option value="INFORMATICA">Informatica</option>
-				<option value="MASCOTAS">Mascotas</option>
-				<option value="MOTOR">Motor</option>
-				<option value="OTROS">Otros</option>
+				<%
+				for (Categoria cat : Categoria.values()) {
+				%>
+				<option value="<%=cat.toString()%>"><%=cat.toString()%></option>
+				<%
+				}
+				%>
 			</select>
 		</div>
 		<div>

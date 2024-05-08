@@ -11,6 +11,7 @@
 	<h2>Has llegado al menú
 		<%=session.getAttribute("user").toString()%></h2>
 	<%
+	session.setAttribute("listaProductos",null);
 	if (session.getAttribute("mensajeMenu") != null) {
 	%>
 	<p style="color: green;"><%=session.getAttribute("mensajeMenu") %></p>
@@ -24,6 +25,9 @@
 	<form action="">
 		<button>
 			<a href="BusquedaProductos">Realizar busquedas de productos</a>
+		</button>
+		<button>
+			<a href="listarProductos.jsp">Listar todos los productos</a>
 		</button>
 
 		<%

@@ -1,5 +1,6 @@
-<%@page import="java.util.LinkedList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.curso.tienda.model.Producto"%>
+<%@page import="com.curso.tienda.service.ProductoService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,13 +13,19 @@
 <body>
 	<%
 	session.setAttribute("error", null);
-	if (session.getAttribute("mensajeList") != null) {
-	%>
-	<h2><%=session.getAttribute("mensajeList")%></h2>
-	<%
-	}
 	Boolean admin = (Boolean) session.getAttribute("admin");
+	List<Producto> lista = null;
+	if (session.getAttribute("listaProductos") != null) {
+		lista = (List<Producto>) session.getAttribute("listaProductos");
+	} else {
+		lista = ProductoService.listaProductos();
+	}
 	%>
+	<h2>
+		Se han encontrado
+		<%=lista.size()%>
+		productos.
+	</h2>
 	<table>
 		<thead>
 			<th>Nombre</th>
@@ -32,8 +39,7 @@
 			<th>Eliminar</th>
 			<%
 			}
-			if (session.getAttribute("listaProductos") != null) {
-			LinkedList<Producto> lista = (LinkedList<Producto>) session.getAttribute("listaProductos");
+
 			for (Producto prod : lista) {
 			%>
 			<tr>
@@ -46,13 +52,13 @@
 				%>
 				<th><a
 					href="ModificarProducto?nombre=<%=prod.getNombre()%>&categoria=<%=prod.getCategoria()%>&precio=<%=prod.getPrecio()%>&stock=<%=prod.getStock()%>">📝Modificar</a></th>
-				<th><a href="EliminarProducto?nombre=<%=prod.getNombre()%>">🚮Eliminar</a></th>
+				<th><a
+					href="EliminarProducto?nombre=<%=prod.getNombre()%>&categoria=<%=prod.getCategoria()%>">🚮Eliminar</a></th>
 				<%
 				}
 				%>
 			</tr>
 			<%
-			}
 			}
 			%>
 		</thead>

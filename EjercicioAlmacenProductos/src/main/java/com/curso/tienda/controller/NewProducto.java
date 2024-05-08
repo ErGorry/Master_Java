@@ -48,7 +48,7 @@ public class NewProducto extends HttpServlet {
 			Producto prod = new Producto(nombre, categoria, precio, stock);
 			ProductoService.anhadirNewProducto(prod);
 			HttpSession sesion = request.getSession();
-			sesion.setAttribute("mensajeMenu", "Se ha añadido el producto: " + nombre);
+			sesion.setAttribute("mensajeMenu", "Se ha añadido/modificado el producto: " + nombre);
 			RequestDispatcher rd = request.getRequestDispatcher("menu.jsp");
 			rd.forward(request, response);
 		} else {

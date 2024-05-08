@@ -12,10 +12,10 @@ public class ProductoService {
 			new Producto("Agua Mineral", "ALIMENTACION", 0.99, 150),
 			new Producto("Atun lata", "ALIMENTACION", 2.99, 50), new Producto("Pan", "ALIMENTACION", 0.89, 15),
 			new Producto("Nevera", "ELECTRODOMESTICOS", 489.99, 3),
-			new Producto("Lavavajillas", "ELECTRODOMESTICOS", 289.99, 4),
+			new Producto("Lavavajillas", "ELECTRODOMESTICOS", 289.99, 0),
 			new Producto("Microondas", "ELECTRODOMESTICOS", 69.99, 12),
 			new Producto("Ventilador", "ELECTRODOMESTICOS", 29.99, 20),
-			new Producto("Ordenador Portatil", "INFORMATICA", 489.99, 3),
+			new Producto("Ordenador Portatil", "INFORMATICA", 489.99, 0),
 			new Producto("Impresora", "INFORMATICA", 79.99, 5), new Producto("PS5", "INFORMATICA", 489.99, 2),
 			new Producto("Monitor", "INFORMATICA", 129.99, 8), new Producto("Bebedero perros", "MASCOTAS", 9.99, 25),
 			new Producto("Cepillo pelo largo", "MASCOTAS", 9.99, 30),
@@ -26,7 +26,7 @@ public class ProductoService {
 			new Producto("Silla gamer", "OTROS", 99.99, 2)));
 
 	public static List<Producto> listaProductos() {
-		return listaProductos.stream().filter(p -> p.getStock() > 0).toList();
+		return listaProductos;
 	}
 
 	public static List<Producto> listaProductosByCategoria(String categoria) {
@@ -40,21 +40,8 @@ public class ProductoService {
 		return listaProductos().stream()
 				.filter(p -> p.getNombre().contains(nombre) && p.getCategoria().equalsIgnoreCase(categoria)).toList();
 	}
-
-	public static List<Producto> listaProductosByPrecioMenor(double precio) {
-		return listaProductos().stream().filter(p -> p.getPrecio() <= precio).toList();
-	}
-
-	public static List<Producto> listaProductosByPrecioMayor(double precio) {
-		return listaProductos().stream().filter(p -> p.getPrecio() >= precio).toList();
-	}
-
 	public static List<Producto> listaProductosSinStock() {
-		return listaProductos.stream().filter(p -> p.getStock() == 0).toList();
-	}
-
-	public static List<Producto> listaProductosByStockMayor(int stock) {
-		return listaProductos().stream().filter(p -> p.getStock() >= stock).toList();
+		return listaProductos.stream().filter(p -> p.getStock()<1).toList();
 	}
 
 	public static void anhadirNewProducto(Producto producto) {
