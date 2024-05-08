@@ -5,6 +5,11 @@ import java.util.List;
 
 import com.curso.tienda.model.Producto;
 
+/**
+ * 
+ * @author Admin 08-05-2024
+ *
+ */
 public class ProductoService {
 
 	private static List<Producto> listaProductos = new LinkedList<Producto>(List.of(
@@ -25,25 +30,56 @@ public class ProductoService {
 			new Producto("Sofa", "OTROS", 524.99, 1), new Producto("Lampara", "OTROS", 54.99, 3),
 			new Producto("Silla gamer", "OTROS", 99.99, 2)));
 
+	/**
+	 * 
+	 * @return lista completa de productos
+	 */
 	public static List<Producto> listaProductos() {
 		return listaProductos;
 	}
 
+	/**
+	 * 
+	 * @param categoria
+	 * @return productos de la categoria
+	 */
 	public static List<Producto> listaProductosByCategoria(String categoria) {
 		return listaProductos().stream().filter(p -> p.getCategoria().equalsIgnoreCase(categoria)).toList();
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @return productos que contengan el nombre
+	 */
 	public static List<Producto> listaProductosByNombre(String nombre) {
 		return listaProductos().stream().filter(p -> p.getNombre().contains(nombre)).toList();
 	}
+
+	/**
+	 * 
+	 * @param nombre
+	 * @param categoria
+	 * @return productos que contengan el nombre y dentro de la categoria
+	 */
 	public static List<Producto> listaProductosByNombreCategoria(String nombre, String categoria) {
 		return listaProductos().stream()
 				.filter(p -> p.getNombre().contains(nombre) && p.getCategoria().equalsIgnoreCase(categoria)).toList();
 	}
+
+	/**
+	 * 
+	 * @return productos con stock 0
+	 */
 	public static List<Producto> listaProductosSinStock() {
-		return listaProductos.stream().filter(p -> p.getStock()<1).toList();
+		return listaProductos.stream().filter(p -> p.getStock() < 1).toList();
 	}
 
+	/**
+	 * Metodo para introducir un producto en el almacen
+	 * 
+	 * @param producto
+	 */
 	public static void anhadirNewProducto(Producto producto) {
 		try {
 			listaProductos.add(producto);
@@ -52,6 +88,12 @@ public class ProductoService {
 		}
 	}
 
+	/**
+	 * Metodo para eliminar el producto con el nombre y categoria
+	 * 
+	 * @param producto
+	 * @param categoria
+	 */
 	public static void deleteProducto(String producto, String categoria) {
 		Producto prod = listaProductosByNombreCategoria(producto, categoria).get(0);
 		try {

@@ -1,7 +1,11 @@
 package com.curso.tienda.model;
 
 import java.util.Objects;
-
+/**
+ * 
+ * @author Admin 08-05-2024
+ *
+ */
 public class Producto {
 
 	private String nombre;
