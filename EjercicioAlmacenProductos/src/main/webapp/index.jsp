@@ -13,6 +13,7 @@
 	<p>En esta tienda puede explorar nuestros productos de diferentes
 		categorías</p>
 	<form action="Login" method="post">
+	<p>{admin,admin}Para obtener funcionalidad completa</p>
 		<div>
 			<label for="userName">Nombre de usuario:</label><input type="text"
 				name="userName">
