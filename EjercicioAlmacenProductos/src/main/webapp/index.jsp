@@ -14,6 +14,7 @@
 		categorías</p>
 	<form action="Login" method="post">
 	<p>{admin,admin}Para obtener funcionalidad completa</p>
+	<p>Cualquier otra combinacion para vista sin privilegios</p>
 		<div>
 			<label for="userName">Nombre de usuario:</label><input type="text"
 				name="userName">
