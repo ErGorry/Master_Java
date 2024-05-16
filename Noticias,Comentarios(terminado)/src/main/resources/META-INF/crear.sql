@@ -1,0 +1,3 @@
+CREATE TABLE `periodico`.`noticias` (`titulo` VARCHAR(255) NOT NULL,`autor` VARCHAR(45) NOT NULL,`fecha` DATE NOT NULL,PRIMARY KEY (`titulo`));
+CREATE TABLE `periodico`.`comentarios` (`id` INT NOT NULL AUTO_INCREMENT,`texto` VARCHAR(255) NOT NULL,`autor` VARCHAR(45) NOT NULL,`titulo_noticia` VARCHAR(45) NOT NULL,PRIMARY KEY (`id`));
+ALTER TABLE `comentarios` ADD CONSTRAINT `noticias_fk0` FOREIGN KEY (`titulo_noticia`) REFERENCES `noticias`(`titulo`);
