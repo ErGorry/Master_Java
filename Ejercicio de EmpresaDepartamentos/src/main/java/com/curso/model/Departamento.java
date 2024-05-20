@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
@@ -19,25 +22,29 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "departamentos")
-@NamedQueries({ @NamedQuery(name = "Departamento.listar", query = "SELECT d FROM Departamento d") })
+@NamedQueries({ @NamedQuery(name = "Departamento.getAll", query = "SELECT d FROM Departamento d") })
 public class Departamento implements Serializable, Comparable<Departamento> {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "id_dept")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDepartamento;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "localidad")
 	private String localidad;
-	@OneToMany(mappedBy = "idDepartamento")
+	@OneToMany(mappedBy = "idDepartamento", cascade = CascadeType.ALL)
 	private List<Empleado> listaEmpleados = new ArrayList<Empleado>();
 
 	public Departamento() {
 	}
+	public Departamento(String nombre, String localidad) {
+		this.nombre = nombre;
+		this.localidad = localidad;
+	}
 
 	public Departamento(int idDepartamento, String nombre, String localidad) {
-		super();
 		this.idDepartamento = idDepartamento;
 		this.nombre = nombre;
 		this.localidad = localidad;

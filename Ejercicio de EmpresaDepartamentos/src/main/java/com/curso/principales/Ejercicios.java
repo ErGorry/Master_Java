@@ -1,5 +1,6 @@
 package com.curso.principales;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -28,8 +29,8 @@ public class Ejercicios {
 		ejercicio3(em,7,23);
 		System.out.println("Muestra todos los departamentos");
 		ejercicio4(em);
-		System.out.println("Muestra todos los empleados del departamento 4");
-		ejercicio5(em,4);
+		System.out.println("Muestra todos los empleados del departamento 3");
+		ejercicio5(em,3);
 		System.out.println("Selecciona los departamentos con menor numero de empleados");
 		ejercicio6(em);
 		System.out.println("Selecciona los empleados que ganan menos sueldo que la media");
@@ -68,7 +69,7 @@ public class Ejercicios {
 	}
 
 	private static void ejercicio4(EntityManager em) {
-		TypedQuery<Departamento> query = em.createNamedQuery("Departamento.listar", Departamento.class);
+		TypedQuery<Departamento> query = em.createNamedQuery("Departamento.getAll", Departamento.class);
 		List<Departamento> lista = query.getResultList();
 		for (Departamento departamento : lista) {
 			System.out.println(departamento);
@@ -86,7 +87,7 @@ public class Ejercicios {
 		em.getTransaction().begin();
 		
 		Departamento dep = em.find(Departamento.class, depart);
-		Empleado emp = new Empleado(60, "ejercicio2", new Date(), 1);
+		Empleado emp = new Empleado("ejercicio2", LocalDate.now(),1);
 		emp.setIdDepartamento(dep);
 		
 		List<Empleado> lista = dep.getListaEmpleados();
@@ -103,9 +104,9 @@ public class Ejercicios {
 		em.getTransaction().begin();
 		Departamento dep = new Departamento(6, "Departamento de alvaros", "Ciudad falsa");
 		
-		Empleado emp1 = new Empleado(50, "Alvaro", new Date(), 1);
-		Empleado emp2 = new Empleado(51, "Alvaro", new Date(), 1);
-		Empleado emp3 = new Empleado(52, "Alvaro", new Date(), 1);
+		Empleado emp1 = new Empleado("Alvaro", LocalDate.now(), 1);
+		Empleado emp2 = new Empleado("Alvaro", LocalDate.now(), 1);
+		Empleado emp3 = new Empleado("Alvaro", LocalDate.now(), 1);
 		emp1.setIdDepartamento(dep);
 		emp2.setIdDepartamento(dep);
 		emp3.setIdDepartamento(dep);

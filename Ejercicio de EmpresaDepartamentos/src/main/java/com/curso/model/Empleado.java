@@ -1,13 +1,19 @@
 package com.curso.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 /**
@@ -17,20 +23,25 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "empleados")
+@NamedQueries(
+		{ @NamedQuery(name = "Empleado.getAll", query = "SELECT e FROM Empleado e") 
+})
+
 public class Empleado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id_emp")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEmpleado;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "fecha")
-	private Date fechaContratacion;
+	private LocalDate fechaContratacion;
 	@Column(name = "sueldo")
 	private double sueldo;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_dept")
 	private Departamento idDepartamento;
 
@@ -38,12 +49,18 @@ public class Empleado implements Serializable {
 		super();
 	}
 
-	public Empleado(int idEmpleado, String nombre, Date fechaContratacion, double sueldo) {
-		super();
-		this.idEmpleado = idEmpleado;
+	public Empleado(String nombre, LocalDate fechaContratacion, double sueldo) {
 		this.nombre = nombre;
 		this.fechaContratacion = fechaContratacion;
 		this.sueldo = sueldo;
+	}
+
+	public Empleado(String nombre, LocalDate fechaContratacion, double sueldo, Departamento departamento) {
+		super();
+		this.nombre = nombre;
+		this.fechaContratacion = fechaContratacion;
+		this.sueldo = sueldo;
+		this.idDepartamento = departamento;
 	}
 
 	public int getIdEmpleado() {
@@ -62,11 +79,11 @@ public class Empleado implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Date getFechaContratacion() {
+	public LocalDate getFechaContratacion() {
 		return fechaContratacion;
 	}
 
-	public void setFechaContratacion(Date fechaContratacion) {
+	public void setFechaContratacion(LocalDate fechaContratacion) {
 		this.fechaContratacion = fechaContratacion;
 	}
 
@@ -93,9 +110,9 @@ public class Empleado implements Serializable {
 	 */
 	public void maxAntiguedad(Empleado emp) {
 		if (!this.equals(emp)) {
-			if (this.getFechaContratacion().before(emp.getFechaContratacion())) {
+			if (this.getFechaContratacion().isBefore(emp.getFechaContratacion())) {
 				System.out.println(this.nombre + " entro antes a la empresa, tiene mayor antiguedad");
-			} else if (this.getFechaContratacion().after(emp.getFechaContratacion())) {
+			} else if (this.getFechaContratacion().isAfter(emp.getFechaContratacion())) {
 				System.out.println(emp.getNombre() + " entro antes a la empresa, tiene mayor antiguedad");
 			} else {
 				System.out.println(this.nombre + " y " + emp.getNombre() + " fueron contratados el mismo dia");
@@ -112,9 +129,9 @@ public class Empleado implements Serializable {
 	 */
 	public void minAntiguedad(Empleado emp) {
 		if (!this.equals(emp)) {
-			if (this.getFechaContratacion().before(emp.getFechaContratacion())) {
+			if (this.getFechaContratacion().isBefore(emp.getFechaContratacion())) {
 				System.out.println(this.nombre + " entro mas tarde a la empresa, tiene menor antiguedad");
-			} else if (this.getFechaContratacion().after(emp.getFechaContratacion())) {
+			} else if (this.getFechaContratacion().isAfter(emp.getFechaContratacion())) {
 				System.out.println(emp.getNombre() + " entro mas tarde a la empresa, tiene menor antiguedad");
 			} else {
 				System.out.println(this.nombre + " y " + emp.getNombre() + " fueron contratados el mismo dia");
