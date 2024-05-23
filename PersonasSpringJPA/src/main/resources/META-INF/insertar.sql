@@ -1,0 +1,15 @@
+INSERT INTO usuario (id, username, localidad, edad) VALUES  (1, 'Juan Pérez', 'Ciudad del Este', 30);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (2, 'María González', 'Buenos Aires', 25);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (3, 'Pedro Ramírez', 'Santiago de Chile', 42);
+INSERT INTO usuario (id, username, localidad, edad) VALUES(4, 'Ana López', 'Lima', 28);
+INSERT INTO usuario (id, username, localidad, edad) VALUES(5, 'Carlos García', 'Bogotá', 35);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (6, 'Isabel Moreno', 'Ciudad de México', 40);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (7, 'Diego Rodríguez', 'San José', 22);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (8, 'Laura Sánchez', 'Montevideo', 31);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (9, 'Alejandro Fernández', 'La Habana', 46);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (10, 'Carolina Jiménez', 'Caracas', 27);
+INSERT INTO usuario (id, username, localidad, edad) VALUES(11, 'David Martínez', 'Santo Domingo', 34);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (12, 'Evelyn Gómez', 'San Salvador', 29);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (13, 'Francisco Chávez', 'Tegucigalpa', 41);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (14, 'Jessica Torres', 'Managua', 24);
+INSERT INTO usuario (id, username, localidad, edad) VALUES (15, 'Luis Rivera', 'Guatemala', 33);
