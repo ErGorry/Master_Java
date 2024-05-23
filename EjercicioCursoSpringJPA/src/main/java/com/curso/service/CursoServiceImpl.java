@@ -22,7 +22,7 @@ public class CursoServiceImpl implements CursoService {
 
 	@Override
 	public List<Curso> cursosByPrecio(double desde, double hasta) {
-		return dao.cursosByPrecio(desde, hasta);
+		return dao.findByPrecioBetween(desde, hasta);
 	}
 
 	@Override

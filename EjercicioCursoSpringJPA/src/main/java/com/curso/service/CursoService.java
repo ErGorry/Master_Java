@@ -3,7 +3,6 @@ package com.curso.service;
 import java.util.List;
 import java.util.Optional;
 
-
 import com.curso.model.Curso;
 
 public interface CursoService {
@@ -16,7 +15,7 @@ public interface CursoService {
 
 	List<Curso> eliminarCurso(String codCurso);
 
-	void actualizarDuracion(int duracion,String codCurso);
+	void actualizarDuracion(int duracion, String codCurso);
 
 	List<Curso> cursosByPrecio(double desde, double hasta);
 }
