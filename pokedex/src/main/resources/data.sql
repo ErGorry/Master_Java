@@ -1,0 +1,15 @@
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (1, 'Bulbasaur', 13, 59, 97, 95, 68, 63, 244);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (2, 'Ivysaur', 38, 96, 68, 74, 80, 65, 200);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (3, 'Venusaur', 38, 87, 58, 59, 100, 55, 168);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (4, 'Charmander', 16, 77, 94, 82, 58, 77, 156);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (5, 'Charmeleon', 27, 58, 96, 98, 81, 74, 220);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (6, 'Charizard', 23, 66, 54, 86, 97, 92, 231);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (7, 'Squirtle', 32, 96, 90, 75, 100, 76, 222);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (8, 'Wartortle', 25, 93, 93, 61, 85, 67, 236);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (9, 'Blastoise', 14, 94, 79, 63, 87, 88, 180);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (10, 'Caterpie', 39, 74, 61, 99, 63, 97, 223);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (11, 'Metapod', 39, 89, 61, 66, 98, 75, 181);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (12, 'Butterfree', 15, 51, 75, 80, 95, 97, 221);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (13, 'Weedle', 22, 76, 94, 81, 60, 70, 210);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (14, 'Kakuna', 19, 73, 57, 85, 52, 94, 198);
+insert into pokemon (num_pokedex, nombre, nivel, ataque, ataque_especial, defensa, defensa_especial, velocidad, vida) values (15, 'Beedrill', 49, 55, 55, 91, 71, 98, 220);
