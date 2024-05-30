@@ -1,0 +1,11 @@
+DROP SCHEMA IF EXISTS productos;
+CREATE SCHEMA productos;
+DROP TABLE IF EXISTS productos.producto;
+CREATE TABLE productos.producto (id_producto INT AUTO_INCREMENT,nombre VARCHAR(255) NULL,descripcion VARCHAR(255) NULL,stock INT NOT NULL,precio_unitario DOUBLE NOT NULL,PRIMARY KEY(id_producto));
+INSERT INTO productos.producto (nombre, descripcion, stock, precio_unitario) VALUES ('Silla', 'Silla cocina', '25', '40.5');
+INSERT INTO productos.producto (nombre, descripcion, stock, precio_unitario) VALUES ('Mesa', 'Mesa cocina', '25', '150');
+INSERT INTO productos.producto (nombre, descripcion, stock, precio_unitario) VALUES ('Microondas', 'Microondas con grill', '20', '80');
+DROP SCHEMA IF EXISTS pedidos;
+CREATE SCHEMA pedidos;
+DROP TABLE IF EXISTS pedidos.pedido;
+CREATE TABLE pedidos.pedido (id_pedido INT AUTO_INCREMENT,comprador VARCHAR(255) NULL,nombre_producto VARCHAR(255) NULL,unidades INT NOT NULL,fecha_pedido date NOT NULL,precio_total DOUBLE NOT NULL,PRIMARY KEY(id_pedido));

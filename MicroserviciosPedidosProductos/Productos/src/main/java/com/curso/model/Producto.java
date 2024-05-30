@@ -6,7 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+/**
+ * Entidad de productos de la BBDD tabla=producto
+ * @author Admin
+ *
+ */
 @Entity
 public class Producto {
 

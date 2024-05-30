@@ -8,6 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * Entidad Pedido de la BBDD
+ * 
+ * @author Admin
+ *
+ */
 @Entity
 public class Pedido {
 	@Id

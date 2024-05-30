@@ -7,6 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Aplicacion de configuracion de los pedidos
+ * 
+ * @author Admin
+ *
+ */
 @EntityScan(basePackages = "com.curso.model")
 @EnableJpaRepositories(basePackages = "com.curso.dao")
 @SpringBootApplication(scanBasePackages = { "com.curso.controller", "com.curso.service" })

@@ -1,17 +1,12 @@
 package com.curso.model;
 
 import java.util.Objects;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
+/**
+ * Clase DTO de acceso a productos de los pedidos
+ * @author Admin
+ *
+ */
 public class Producto {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProducto;
 	private String nombre;
 	private String descripcion;
@@ -99,8 +94,8 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion="
-				+ descripcion + ", stock=" + stock + ", precioUnitario=" + precioUnitario + "]";
+		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", stock="
+				+ stock + ", precioUnitario=" + precioUnitario + "]";
 	}
 
 }

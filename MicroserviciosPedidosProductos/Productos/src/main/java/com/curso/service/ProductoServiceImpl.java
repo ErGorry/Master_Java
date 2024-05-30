@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import com.curso.dao.ProductoDao;
 import com.curso.model.Producto;
 
+/**
+ * 
+ * @author Admin
+ *
+ */
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
@@ -21,6 +26,7 @@ public class ProductoServiceImpl implements ProductoService {
 		return dao.findAll();
 	}
 
+	@Override
 	public void actualizarStock(Producto producto) {
 
 		dao.save(producto);
@@ -36,5 +42,18 @@ public class ProductoServiceImpl implements ProductoService {
 	public Optional<Producto> buscar(String nombre) {
 
 		return Optional.of(dao.findByNombre(nombre).get(0));
+	}
+
+	@Override
+	public void eliminar(Integer idProducto) {
+
+		dao.deleteById(idProducto);
+		;
+	}
+
+	@Override
+	public void crearProducto(Producto producto) {
+
+		dao.save(producto);
 	}
 }
